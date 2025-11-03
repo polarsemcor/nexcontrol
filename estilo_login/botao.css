@@ -1,0 +1,76 @@
+:root {
+    --cor-de-fundo: #E5E7EB;
+    --cor-do-botao: #0057D9;
+    --cor-detalhe: #00e5a0;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+    background: linear-gradient(to bottom, #0b0b2b, #1b2735 70%, #090a0f);
+}
+
+/* Estrelas */
+.stars { width:1px; height:1px; position:absolute; background:white; 
+  box-shadow: 2vw 5vh 2px white, 10vw 8vh 2px white, 15vw 15vh 1px white,
+              22vw 22vh 1px white, 28vw 12vh 2px white, 32vw 32vh 1px white,
+              38vw 18vh 2px white, 42vw 35vh 1px white, 48vw 25vh 2px white;
+  animation: twinkle 8s infinite linear;
+}
+.shooting-star { position:absolute; width:100px; height:2px; background:linear-gradient(90deg, white, transparent); animation: shoot 3s infinite ease-in; }
+.shooting-star:nth-child(1){ top:20%; left:-100px; animation-delay:0s; }
+.shooting-star:nth-child(2){ top:35%; left:-100px; animation-delay:1s; }
+.shooting-star:nth-child(3){ top:50%; left:-100px; animation-delay:2s; }
+.shooting-star:nth-child(4){ top:65%; left:-100px; animation-delay:3s; }
+.shooting-star:nth-child(5){ top:80%; left:-100px; animation-delay:4s; }
+
+@keyframes twinkle {0%,100%{opacity:0.8;}50%{opacity:0.4;}}
+@keyframes shoot {0%{transform:translateX(0) translateY(0) rotate(25deg);opacity:1;}100%{transform:translateX(120vw) translateY(50vh) rotate(25deg);opacity:0;}}
+
+/* Dashboard */
+.dashboard {
+    position: relative;
+    z-index: 10;
+    max-width: 800px;
+    margin: 50px auto;
+    background: rgba(229, 231, 235, 0.6);
+    border-radius: 15px;
+    padding: 30px;
+    text-align: center;
+    color: var(--cor-detalhe);
+}
+
+.relay-box {
+    background: rgba(0,0,0,0.3);
+    padding: 20px;
+    margin: 15px auto;
+    border-radius: 10px;
+    width: 300px;
+    color: var(--cor-detalhe);
+}
+
+.relay-status {
+    font-size: 18px;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.btn-rele {
+    padding: 10px 25px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+    color: white;
+    margin: 5px;
+}
+
+.btn-rele.on { background-color: var(--cor-do-botao); }
+.btn-rele.off { background-color: #f44336; }
+.btn-rele:hover { opacity: 0.85; }
+
+#general-buttons { margin-top:20px; }

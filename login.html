@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NexControl - Login</title>
+    <link href="estilo_login/login.css" rel="stylesheet"/>
+</head>
+<body>
+    <form id="loginForm">
+        <div class="titulo">
+            <h1>Faça o seu login</h1>
+            <div class="barra-horizontal"></div>
+        </div>
+
+        <div class="campo-input">
+            <label for="usuario">Seu Usuário*</label>
+            <input type="text" id="usuario" required />
+        </div>
+
+        <div class="campo-input">    
+            <label for="senha">Sua Senha*</label>
+            <input type="password" id="senha" required />
+        </div>
+
+        <div class="lembrar-me">
+            <input type="checkbox" id="lembrar" />
+            <label for="lembrar">Lembrar-me</label>
+        </div>
+
+        <button type="submit">Entrar</button>
+
+        <p>Esqueceu sua senha? <a href="ajuda.html">Clique aqui</a></p>
+    </form>
+
+    <script type="module">
+        // Importa módulos do Firebase
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+        import { getDatabase, ref, get, child } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-database.js";
+
+        // Configuração do Firebase
+        const firebaseConfig = {
+            apiKey: "2zqhYQbVx0pimlBrCrpqopGyiw6NqVZdhqbuNVrncrA",
+            authDomain: "nexcontrol.firebaseapp.com",
+            databaseURL: "https://nexcontrol-default-rtdb.firebaseio.com",
+            projectId: "nexcontrol",
+        };
+
+        // Inicializa Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getDatabase(app);
+
+        // Manipula o envio do formulário
+        document.getElementById("loginForm").addEventListener("submit", async (event) => {
+            event.preventDefault();
+
+            const usuarioInput = document.getElementById("usuario").value.trim();
+            const senhaInput = document.getElementById("senha").value.trim();
+
+            if (!usuarioInput || !senhaInput) {
+                alert("Preencha todos os campos!");
+                return;
+            }
+
+            const dbRef = ref(db);
+
+            try {
+                // Busca todos os usuários
+                const snapshot = await get(child(dbRef, "usuarios"));
+
+                if (snapshot.exists()) {
+                    let loginValido = false;
+                    let usuarioEncontrado = null;
+
+                    snapshot.forEach((childSnap) => {
+                        const dados = childSnap.val();
+                        if (dados.usuario === usuarioInput && dados.senha === senhaInput) {
+                            loginValido = true;
+                            usuarioEncontrado = dados;
+                        }
+                    });
+
+                    if (loginValido) {
+                        alert(`Bem-vindo(a), ${usuarioEncontrado.nome || usuarioInput}!`);
+                        
+                        localStorage.setItem("usuarioLogado", JSON.stringify(usuarioEncontrado));
+                        window.location.href = "dashboard.html";
+                    } else {
+                        alert("Usuário ou senha incorretos!");
+                    }
+                } else {
+                    alert("Nenhum usuário encontrado no banco!");
+                }
+            } catch (error) {
+                console.error("Erro ao acessar o Firebase:", error);
+                alert("Erro ao conectar com o banco de dados.");
+            }
+        });
+    </script>
+</body>     
+</html>

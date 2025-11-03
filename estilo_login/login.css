@@ -1,0 +1,112 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+    font-family: "Arial", sans-serif;
+    color: #404040;
+    display: flex;
+    height: 100vh; 
+    justify-content: center;
+    align-items: center; 
+    background-image: url("/img/fundo.png");
+    background-size: cover;
+    background-position: center;
+}
+
+form {
+    background-color: white;
+    padding: 50px;
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2); /* sombra suave */
+}
+
+
+.titulo {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+h1 {
+    font-size: 24px;
+    text-align: center;
+}
+
+.barra-horizontal {
+    width: 210px;
+    height: 5px;
+    background-color: #00e5a0;
+    margin: 0 auto;
+}
+
+
+.campo-input {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+input {
+    padding: 10px 20px;
+    border-radius: 15px;
+    border: none;
+    background-color: #dfd6d6;
+    font-size: 16px;
+}
+
+input:focus {
+    outline: none;
+    box-shadow: 0 0 5px #00e5a0;
+}
+
+
+.lembrar-me {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.lembrar-me label {
+    cursor: pointer;
+}
+
+
+button {
+    padding: 15px;
+    width: 160px;
+    border-radius: 30px;
+    background-image: linear-gradient(#00e5a0, #00bfa5);
+    border: solid 1px #00bfa5;
+    border-right-width: 4px;
+    border-bottom-width: 4px;
+    font-size: 18px;
+    color: white;
+    font-weight: 700;
+    text-transform: uppercase;
+    align-self: center;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+
+a {
+    color: #00bfa5;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}

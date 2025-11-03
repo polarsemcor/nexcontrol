@@ -1,0 +1,25 @@
+body {
+    background-color: #007BFF; 
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center; 
+    align-items: center;     
+    font-family: Arial, sans-serif; 
+}
+
+.texto {
+    display: flex;
+    flex-direction: column; 
+    justify-content: center;
+    align-items: center;
+    gap: 20px; 
+}
+
+.texto h1 {
+    color: white;
+    font-size: 60px;
+    text-align: center;
+    text-shadow: 2px 2px 4px black;
+    margin: 0; 
+}

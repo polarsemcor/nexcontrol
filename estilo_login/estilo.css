@@ -1,0 +1,166 @@
+:root{
+    --cor-de-fundo:#E5E7EB;
+    --cor-do-botao:#0057D9;
+    --cor-detalhe:#00e5a0;
+
+}   
+*{ margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.center{
+    display:flex;
+    flex-wrap: wrap;
+    max-width: 5000px;
+    margin: 0 auto;
+    padding: 0 2% ;
+
+
+}
+header{
+    height:200px;
+    padding: 20px 0;
+    background-color:#f5fffb ;
+
+}
+html,body{
+    height: 100%;
+    overflow-y:hidden;
+    overflow-x:hidden;
+}
+.logo{
+    width: 50%;
+    
+}
+.menu{
+    padding-top:25px ;
+    width: 50%;
+    text-align: right;
+    
+}
+.menu a{
+    color:black;
+    text-decoration:none;
+    font-weight:bold;
+    margin-right:15px;
+    font-size: 20px;
+    padding: 20px 20px;
+    
+}
+section.sobre{
+    height: calc(100% - 200px);
+    position: relative;
+}
+.extras{
+    position: absolute;
+    bottom:-450px;
+    right: -500px;
+    width:1200px;
+    height: 1200px;
+    border-radius: 50%;
+    background-color:var(--cor-do-botao);
+}
+.extras img {
+    position: absolute;
+    top: -30px;     
+    left: -50px;    
+    transform: rotate(10deg); 
+    width: 700px;  
+}
+.texto-sobre{
+    margin-top: 100px;
+}
+.texto-sobre h1 {
+    font-size: 50px;
+}
+.texto-sobre p{
+    margin: 20px 0;
+    color:black;
+    font-size: 17px;
+    font-weight: bold;
+    max-width: 850px;
+}
+.texto-sobre button{
+    border: 0;
+    background-color: var(--cor-do-botao);
+    color: white;
+    border-radius: 10px;
+    width: 150px;
+    height: 50px;
+    cursor: pointer;
+}
+
+@media (max-width: 900px) {
+    header {
+        height: auto;
+        text-align: center;
+    }
+
+    .logo, .menu {
+        width: 100%;
+        text-align: center;
+    }
+
+    .menu a{
+        display: inline-block;
+        margin: 10px;
+        font-size: 18px;
+    }
+
+    section.sobre {
+        height: auto;
+        padding: 40px 0;
+    }
+
+    .extras {
+        width: 600px;
+        height: 600px;
+        bottom: -250px;
+        right: -250px;
+    }
+
+    .extras img {
+        width: 300px;
+        top: 0;
+        left: 0;
+    }
+
+    .texto-sobre {
+        margin-top: 50px;
+        text-align: center;
+        padding: 0 5%;
+    }
+
+    .texto-sobre h1 {
+        font-size: 30px;
+        line-height: 1.3em;
+    }
+
+    .texto-sobre p {
+        font-size: 16px;
+        max-width: 90%;
+        margin: 15px auto;
+    }
+
+    .texto-sobre button {
+        width: 100%;
+        max-width: 250px;
+        height: 45px;
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 500px) {
+    .extras {
+        display: none;
+    }
+
+    .texto-sobre h1 {
+        font-size: 24px;
+    }
+
+    .texto-sobre p {
+        font-size: 14px;
+    }
+}
